@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creed Consortium — United by Excellence, Driven by Results</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0a1628;
+  --navy-mid: #122040;
+  --navy-light: #1c3060;
+  --gold: #c8973d;
+  --gold-light: #e4b868;
+  --gold-pale: #f5e8cc;
+  --cream: #faf7f2;
+  --white: #ffffff;
+  --slate: #4a5568;
+  --slate-light: #718096;
+  --border: rgba(200,151,61,0.18);
+  --border-light: rgba(10,22,40,0.08);
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--font-sans); background: var(--cream); color: var(--navy); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* ======================== NAV ======================== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.25rem 0;
+  transition: all 0.4s var(--ease);
+}
+nav.scrolled {
+  background: rgba(10,22,40,0.97);
+  backdrop-filter: blur(16px);
+  padding: 0.75rem 0;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+}
+.nav-inner {
+  max-width: 1240px; margin: 0 auto; padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.nav-logo-icon {
+  width: 36px; height: 36px;
+  background: var(--gold);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.nav-logo-text { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 600; color: var(--white); letter-spacing: 0.02em; }
+.nav-logo-text span { color: var(--gold); }
+.nav-links { display: flex; align-items: center; gap: 0.25rem; }
+.nav-links a {
+  padding: 0.5rem 1rem; font-size: 0.875rem; font-weight: 400;
+  color: rgba(255,255,255,0.75); border-radius: 6px;
+  transition: all 0.2s; letter-spacing: 0.01em;
+}
+.nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.08); }
+.nav-cta {
+  background: var(--gold) !important; color: var(--navy) !important;
+  font-weight: 600 !important; padding: 0.5rem 1.25rem !important;
+  border-radius: 6px !important;
+}
+.nav-cta:hover { background: var(--gold-light) !important; }
+
+/* ======================== HERO ======================== */
+#hero {
+  min-height: 100vh; position: relative;
+  display: flex; align-items: center;
+  background: var(--navy);
+  overflow: hidden;
+}
+.hero-bg-img {
+  position: absolute; inset: 0;
+  background: url('https://images.unsplash.com/photo-1549923746-c502d488b3ea?w=1800&q=80') center/cover;
+  opacity: 0.15;
+}
+.hero-grid-overlay {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(200,151,61,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,151,61,0.06) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.6;
+}
+.hero-glow {
+  position: absolute; width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(200,151,61,0.15) 0%, transparent 70%);
+  top: -100px; right: -100px; border-radius: 50%;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1240px; margin: 0 auto; padding: 8rem 2rem 5rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+}
+.hero-left { }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500;
+  color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 0.4rem 1rem; border: 1px solid rgba(200,151,61,0.35);
+  border-radius: 100px; margin-bottom: 2rem;
+}
+.hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+h1.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 5.5vw, 5rem);
+  font-weight: 600; line-height: 1.08;
+  color: var(--white); margin-bottom: 1.5rem;
+}
+h1.hero-title em { color: var(--gold); font-style: italic; }
+.hero-desc {
+  font-size: 1.05rem; line-height: 1.75; color: rgba(255,255,255,0.65);
+  max-width: 480px; margin-bottom: 2.5rem;
+}
+.hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-bottom: 3.5rem; }
+.btn-primary-hero {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--gold); color: var(--navy);
+  padding: 0.875rem 2rem; font-size: 0.9rem; font-weight: 600;
+  border-radius: 6px; transition: all 0.25s var(--ease);
+  letter-spacing: 0.02em;
+}
+.btn-primary-hero:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(200,151,61,0.35); }
+.btn-ghost-hero {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  color: rgba(255,255,255,0.8); font-size: 0.9rem; font-weight: 400;
+  padding: 0.875rem 1.5rem; border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px; transition: all 0.25s var(--ease);
+}
+.btn-ghost-hero:hover { border-color: rgba(255,255,255,0.4); color: var(--white); background: rgba(255,255,255,0.06); }
+.hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.hero-stat {
+  padding: 1rem; border: 1px solid rgba(200,151,61,0.2);
+  border-radius: 8px; background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(8px);
+}
+.hero-stat-val { font-family: var(--font-serif); font-size: 2rem; font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 0.3rem; }
+.hero-stat-lbl { font-size: 0.72rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
+
+.hero-right { position: relative; }
+.hero-mockup {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(200,151,61,0.25);
+  border-radius: 16px; padding: 2rem; backdrop-filter: blur(12px);
+  position: relative;
+}
+.hero-mockup::before {
+  content: ''; position: absolute; top: -1px; left: 2rem; right: 2rem; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  border-radius: 0 0 4px 4px;
+}
+.mockup-label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1rem; opacity: 0.7; }
+.mockup-img {
+  width: 100%; aspect-ratio: 4/3; object-fit: cover;
+  border-radius: 8px; overflow: hidden;
+  background: var(--navy-mid);
+  display: flex; align-items: center; justify-content: center;
+}
+.mockup-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+.mockup-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.25rem; }
+.tag { padding: 0.3rem 0.75rem; border-radius: 100px; font-size: 0.72rem; font-weight: 500; }
+.tag-gold { background: rgba(200,151,61,0.15); color: var(--gold-light); border: 1px solid rgba(200,151,61,0.3); }
+.tag-blue { background: rgba(100,160,255,0.1); color: #7eb5f5; border: 1px solid rgba(100,160,255,0.2); }
+.tag-green { background: rgba(80,200,120,0.1); color: #6bc58a; border: 1px solid rgba(80,200,120,0.2); }
+
+.floating-card {
+  position: absolute; right: -1.5rem; bottom: -1.5rem;
+  background: var(--gold); border-radius: 10px; padding: 1rem 1.25rem;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.3);
+}
+.floating-card-val { font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--navy); line-height: 1; }
+.floating-card-lbl { font-size: 0.7rem; color: rgba(10,22,40,0.7); font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem; }
+
+/* ======================== SECTIONS COMMON ======================== */
+section { padding: 6rem 2rem; }
+.container { max-width: 1240px; margin: 0 auto; }
+.label-pill {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold);
+  letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500;
+  margin-bottom: 1rem;
+}
+.label-pill::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+h2.sec-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 600; line-height: 1.12; color: var(--navy);
+  margin-bottom: 1rem;
+}
+h2.sec-title em { color: var(--gold); font-style: italic; }
+h2.sec-title-light { color: var(--white) !important; }
+.sec-desc { font-size: 1rem; line-height: 1.75; color: var(--slate); max-width: 540px; }
+
+/* ======================== WHY CREED ======================== */
+#why {
+  background: var(--white);
+  position: relative; overflow: hidden;
+}
+#why::before {
+  content: ''; position: absolute; top: 0; right: 0;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(200,151,61,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.why-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: center; }
+.why-img-wrap { position: relative; }
+.why-img-frame {
+  border-radius: 12px; overflow: hidden;
+  aspect-ratio: 3/4; position: relative;
+}
+.why-img-frame img { width: 100%; height: 100%; object-fit: cover; }
+.why-img-frame::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(10,22,40,0.5));
+}
+.why-accent-box {
+  position: absolute; bottom: -1.5rem; right: -1.5rem;
+  background: var(--navy); border-radius: 10px; padding: 1.5rem;
+  border: 1px solid rgba(200,151,61,0.25); min-width: 180px;
+}
+.why-accent-box-num { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 700; color: var(--gold); line-height: 1; }
+.why-accent-box-lbl { font-size: 0.75rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.25rem; }
+.why-right { }
+.why-features { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+.why-feat {
+  display: grid; grid-template-columns: 48px 1fr; gap: 1rem; align-items: start;
+  padding: 1.5rem; border: 1px solid var(--border-light);
+  border-radius: 10px; transition: all 0.3s var(--ease);
+}
+.why-feat:hover { border-color: var(--border); background: var(--cream); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.why-feat-icon {
+  width: 48px; height: 48px; background: var(--gold-pale);
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.why-feat-icon svg { width: 22px; height: 22px; stroke: var(--gold); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.why-feat-title { font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.3rem; }
+.why-feat-desc { font-size: 0.875rem; line-height: 1.65; color: var(--slate); }
+
+/* ======================== SERVICES ======================== */
+#services { background: var(--cream); }
+.services-header { text-align: center; margin-bottom: 4rem; }
+.services-header .sec-desc { margin: 0 auto; text-align: center; }
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+}
+.svc-card {
+  background: var(--white); border: 1px solid var(--border-light);
+  border-radius: 12px; padding: 2rem; position: relative;
+  overflow: hidden; transition: all 0.3s var(--ease);
+  cursor: default;
+}
+.svc-card::before {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: var(--gold); opacity: 0;
+  transition: opacity 0.3s;
+}
+.svc-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); border-color: var(--border); }
+.svc-card:hover::before { opacity: 1; }
+.svc-num { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold); letter-spacing: 0.15em; margin-bottom: 1rem; opacity: 0.7; }
+.svc-icon {
+  width: 52px; height: 52px; background: var(--navy);
+  border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;
+}
+.svc-icon svg { width: 22px; height: 22px; stroke: var(--gold); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.svc-title { font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: 0.6rem; line-height: 1.3; }
+.svc-desc { font-size: 0.875rem; line-height: 1.65; color: var(--slate); margin-bottom: 1.25rem; }
+.svc-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
+.svc-tag { font-size: 0.7rem; padding: 0.25rem 0.6rem; background: var(--cream); border: 1px solid var(--border-light); border-radius: 100px; color: var(--slate); }
+.svc-invest { font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); font-weight: 500; }
+
+/* ======================== APPROACH STRIP ======================== */
+#approach { background: var(--navy); overflow: hidden; position: relative; }
+.approach-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.approach-text .label-pill { color: var(--gold); }
+.approach-text .sec-title { color: var(--white); }
+.approach-text .sec-desc { color: rgba(255,255,255,0.6); }
+.approach-steps { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 0; }
+.approach-step { display: flex; gap: 1.25rem; align-items: flex-start; padding: 1.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.approach-step:last-child { border-bottom: none; }
+.step-num {
+  width: 36px; height: 36px; flex-shrink: 0;
+  background: rgba(200,151,61,0.15); border: 1px solid rgba(200,151,61,0.35);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; color: var(--gold);
+}
+.step-title { font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 0.2rem; }
+.step-desc { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.step-duration { font-family: var(--font-mono); font-size: 0.65rem; color: var(--gold); opacity: 0.7; margin-top: 0.3rem; }
+
+.approach-img-side { position: relative; }
+.approach-imgs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.approach-img-1 { grid-column: 1 / -1; border-radius: 10px; overflow: hidden; aspect-ratio: 16/9; }
+.approach-img-1 img, .approach-img-2 img, .approach-img-3 img { width: 100%; height: 100%; object-fit: cover; }
+.approach-img-2 { border-radius: 10px; overflow: hidden; aspect-ratio: 4/3; }
+.approach-img-3 { border-radius: 10px; overflow: hidden; aspect-ratio: 4/3; background: var(--gold); display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+.approach-img-3-inner { text-align: center; }
+.approach-img-3-inner .big { font-family: var(--font-serif); font-size: 3rem; font-weight: 700; color: var(--navy); line-height: 1; }
+.approach-img-3-inner .lbl { font-size: 0.75rem; font-weight: 600; color: rgba(10,22,40,0.7); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.4rem; }
+
+/* ======================== STATS ======================== */
+#stats {
+  background: var(--gold);
+  padding: 4rem 2rem;
+}
+.stats-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; align-items: center; }
+.stat-item { text-align: center; }
+.stat-val { font-family: var(--font-serif); font-size: 3.5rem; font-weight: 700; color: var(--navy); line-height: 1; }
+.stat-lbl { font-size: 0.8rem; font-weight: 500; color: rgba(10,22,40,0.65); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.4rem; }
+.stat-divider { width: 1px; height: 60px; background: rgba(10,22,40,0.2); margin: 0 auto; }
+
+/* ======================== INSIGHTS ======================== */
+#insights { background: var(--white); }
+.insights-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
+.btn-outline-gold {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.625rem 1.25rem; font-size: 0.85rem; font-weight: 500;
+  border: 1.5px solid var(--gold); color: var(--gold);
+  border-radius: 6px; transition: all 0.25s;
+}
+.btn-outline-gold:hover { background: var(--gold); color: var(--navy); }
+.insights-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 1.5rem; }
+.insight-card { border-radius: 12px; overflow: hidden; position: relative; background: var(--cream); border: 1px solid var(--border-light); transition: all 0.3s var(--ease); cursor: default; }
+.insight-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.1); transform: translateY(-3px); }
+.insight-img { width: 100%; overflow: hidden; }
+.insight-img.tall { aspect-ratio: 3/4; }
+.insight-img.short { aspect-ratio: 16/9; }
+.insight-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
+.insight-card:hover .insight-img img { transform: scale(1.04); }
+.insight-body { padding: 1.5rem; }
+.insight-cat {
+  font-family: var(--font-mono); font-size: 0.65rem; font-weight: 500;
+  color: var(--gold); text-transform: uppercase; letter-spacing: 0.15em;
+  display: inline-block; margin-bottom: 0.6rem;
+}
+.insight-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; line-height: 1.35; color: var(--navy); margin-bottom: 0.5rem; }
+.insight-card.small .insight-title { font-size: 0.95rem; }
+.insight-excerpt { font-size: 0.85rem; color: var(--slate); line-height: 1.6; margin-bottom: 1rem; }
+.insight-meta { display: flex; align-items: center; justify-content: space-between; }
+.insight-date { font-size: 0.75rem; color: var(--slate-light); }
+.insight-read { font-size: 0.8rem; font-weight: 500; color: var(--gold); }
+
+/* ======================== TESTIMONIALS ======================== */
+#testimonials { background: var(--cream); }
+.test-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: start; }
+.test-left .label-pill { margin-bottom: 1rem; }
+.test-cards { display: flex; flex-direction: column; gap: 1.5rem; }
+.test-card {
+  background: var(--white); border: 1px solid var(--border-light);
+  border-radius: 12px; padding: 2rem; position: relative;
+  transition: all 0.3s; cursor: default;
+}
+.test-card.featured { border-color: var(--border); box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+.test-card::before {
+  content: '\201C'; font-family: var(--font-serif);
+  font-size: 4rem; line-height: 1; color: var(--gold);
+  position: absolute; top: 0.5rem; right: 1.5rem; opacity: 0.4;
+}
+.test-text { font-family: var(--font-serif); font-size: 1.05rem; font-style: italic; line-height: 1.65; color: var(--navy); margin-bottom: 1.25rem; }
+.test-author { display: flex; align-items: center; gap: 0.75rem; }
+.test-avatar {
+  width: 42px; height: 42px; border-radius: 50%; overflow: hidden; flex-shrink: 0;
+  background: var(--navy); display: flex; align-items: center; justify-content: center;
+}
+.test-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.test-avatar-initials { font-size: 0.9rem; font-weight: 600; color: var(--gold); font-family: var(--font-serif); }
+.test-name { font-size: 0.875rem; font-weight: 600; color: var(--navy); }
+.test-role { font-size: 0.775rem; color: var(--slate-light); }
+.test-stars { display: flex; gap: 2px; margin-bottom: 0.75rem; }
+.star { color: var(--gold); font-size: 0.9rem; }
+
+/* ======================== PILLARS ======================== */
+#pillars { background: var(--navy); }
+.pillars-header { text-align: center; margin-bottom: 4rem; }
+.pillars-header .label-pill { color: var(--gold); }
+.pillars-header .sec-title { color: var(--white); }
+.pillars-header .sec-desc { color: rgba(255,255,255,0.55); margin: 0 auto; text-align: center; }
+.pillars-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.pillar-card {
+  border: 1px solid rgba(200,151,61,0.2); border-radius: 10px;
+  padding: 1.75rem 1.5rem;
+  background: rgba(255,255,255,0.03);
+  transition: all 0.3s var(--ease); cursor: default;
+}
+.pillar-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(200,151,61,0.4); }
+.pillar-num { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold); opacity: 0.6; letter-spacing: 0.15em; margin-bottom: 1rem; }
+.pillar-title { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 600; color: var(--white); margin-bottom: 0.75rem; line-height: 1.3; }
+.pillar-desc { font-size: 0.82rem; line-height: 1.65; color: rgba(255,255,255,0.5); }
+
+/* ======================== WHO WE SERVE ======================== */
+#serve { background: var(--cream); }
+.serve-layout { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+.serve-card {
+  background: var(--white); border: 1px solid var(--border-light);
+  border-radius: 12px; padding: 2.5rem 2rem; text-align: center;
+  transition: all 0.3s var(--ease); cursor: default;
+}
+.serve-card:hover { border-color: var(--border); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+.serve-icon {
+  width: 64px; height: 64px; margin: 0 auto 1.5rem;
+  background: var(--navy); border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+.serve-icon svg { width: 28px; height: 28px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.serve-title { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 600; color: var(--navy); margin-bottom: 0.75rem; }
+.serve-desc { font-size: 0.875rem; line-height: 1.7; color: var(--slate); }
+
+/* ======================== FINAL CTA ======================== */
+#cta {
+  background: var(--navy); text-align: center;
+  padding: 7rem 2rem; position: relative; overflow: hidden;
+}
+#cta::before {
+  content: ''; position: absolute;
+  top: -200px; left: 50%; transform: translateX(-50%);
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(200,151,61,0.12) 0%, transparent 65%);
+  border-radius: 50%;
+}
+.cta-content { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
+.cta-eyebrow { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 1.5rem; display: block; }
+.cta-title { font-family: var(--font-serif); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; color: var(--white); line-height: 1.12; margin-bottom: 1.25rem; }
+.cta-title em { color: var(--gold); font-style: italic; }
+.cta-desc { font-size: 1rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 2.5rem; }
+.cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.cta-note { font-size: 0.8rem; color: rgba(255,255,255,0.35); font-style: italic; }
+
+/* ======================== FOOTER ======================== */
+footer {
+  background: #060d1a; padding: 3rem 2rem;
+  border-top: 1px solid rgba(200,151,61,0.15);
+}
+.footer-inner { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.footer-brand { }
+.footer-logo { font-family: var(--font-serif); font-size: 1.15rem; color: var(--white); margin-bottom: 0.4rem; }
+.footer-logo span { color: var(--gold); }
+.footer-tagline { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.45); transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+
+/* ======================== SCROLL ANIMATIONS ======================== */
+.fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.fade-up.in { opacity: 1; transform: translateY(0); }
+.fade-up.d1 { transition-delay: 0.1s; }
+.fade-up.d2 { transition-delay: 0.2s; }
+.fade-up.d3 { transition-delay: 0.3s; }
+.fade-up.d4 { transition-delay: 0.4s; }
+.fade-up.d5 { transition-delay: 0.5s; }
+.fade-up.d6 { transition-delay: 0.6s; }
+
+/* ======================== RESPONSIVE ======================== */
+@media (max-width: 1024px) {
+  .hero-content { grid-template-columns: 1fr; gap: 3rem; padding-top: 6rem; }
+  .hero-right { display: none; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .why-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .why-img-wrap { display: none; }
+  .approach-inner { grid-template-columns: 1fr; }
+  .approach-img-side { display: none; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .insights-grid { grid-template-columns: 1fr 1fr; }
+  .test-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  section { padding: 4rem 1rem; }
+  .nav-links { display: none; }
+  .services-grid { grid-template-columns: 1fr; }
+  .insights-grid { grid-template-columns: 1fr; }
+  .serve-layout { grid-template-columns: 1fr; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== NAVIGATION ==================== -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon"></div>
+      <span class="nav-logo-text">Creed <span>Consortium</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#why">About</a>
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#insights">Insights</a>
+      <a href="#cta" class="nav-cta">Get in Touch</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section id="hero">
+  <div class="hero-bg-img"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content container">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Marketing Consulting, Reimagined</div>
+      <h1 class="hero-title">Transform Marketing Excellence Into <em>Measurable Growth</em></h1>
+      <p class="hero-desc">A consortium of senior specialists delivering integrated marketing solutions that drive real business results across Africa and beyond.</p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn-primary-hero">
+          Schedule a Consultation
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#approach" class="btn-ghost-hero">
+          Explore Our Approach
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-val">85%</div><div class="hero-stat-lbl">Revenue Growth</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">3.2×</div><div class="hero-stat-lbl">Average ROI</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">92%</div><div class="hero-stat-lbl">Client Retention</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">15+</div><div class="hero-stat-lbl">Industries Served</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-mockup">
+        <div class="mockup-label">Featured Project</div>
+        <div class="mockup-img">
+          <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=700&q=80" alt="Strategic consulting team">
+        </div>
+        <div class="mockup-tags">
+          <span class="tag tag-gold">Market Strategy</span>
+          <span class="tag tag-blue">Digital Transformation</span>
+          <span class="tag tag-green">Pan-African</span>
+        </div>
+        <div class="floating-card">
+          <div class="floating-card-val">3.8×</div>
+          <div class="floating-card-lbl">Campaign ROI</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WHY CREED ==================== -->
+<section id="why">
+  <div class="container">
+    <div class="why-layout">
+      <div class="why-img-wrap fade-up">
+        <div class="why-img-frame">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80" alt="Expert consulting team">
+        </div>
+        <div class="why-accent-box">
+          <div class="why-accent-box-num">20+</div>
+          <div class="why-accent-box-lbl">Years combined expertise</div>
+        </div>
+      </div>
+      <div class="why-right">
+        <div class="label-pill fade-up">Why Creed Consortium</div>
+        <h2 class="sec-title fade-up d1">A <em>Different Kind</em> of Consultancy</h2>
+        <p class="sec-desc fade-up d2">We combine strategic depth with execution excellence, guided by unwavering principles. Our consortium model delivers senior-level expertise across every engagement.</p>
+        <div class="why-features">
+          <div class="why-feat fade-up d2">
+            <div class="why-feat-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+            </div>
+            <div>
+              <div class="why-feat-title">Collective Expertise</div>
+              <div class="why-feat-desc">We bring together specialists across strategy, digital, brand, and analytics — a full-stack marketing consortium that operates as one cohesive team.</div>
+            </div>
+          </div>
+          <div class="why-feat fade-up d3">
+            <div class="why-feat-icon">
+              <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            </div>
+            <div>
+              <div class="why-feat-title">Measurable Impact</div>
+              <div class="why-feat-desc">Every recommendation, every campaign, every initiative is tied to clear KPIs and business outcomes — not vanity metrics or activity reports.</div>
+            </div>
+          </div>
+          <div class="why-feat fade-up d4">
+            <div class="why-feat-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            </div>
+            <div>
+              <div class="why-feat-title">Principle-Driven Partnership</div>
+              <div class="why-feat-desc">Seven foundational principles guide how we work — from intellectual honesty and cultural intelligence to long-term partnership over transactional engagements.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SERVICES ==================== -->
+<section id="services">
+  <div class="container">
+    <div class="services-header">
+      <div class="label-pill fade-up">Our Services</div>
+      <h2 class="sec-title fade-up d1">Integrated Marketing <em>Solutions</em></h2>
+      <p class="sec-desc fade-up d2">Six practice areas, one seamless team delivering comprehensive marketing excellence across Africa and global markets.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card fade-up d1">
+        <div class="svc-num">01</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+        <div class="svc-title">Strategic Market Implementation</div>
+        <div class="svc-desc">Develop comprehensive strategies and governance structures that translate marketing vision into measurable business results across new and existing markets.</div>
+        <div class="svc-meta"><span class="svc-tag">Market Entry</span><span class="svc-tag">Competitive Positioning</span><span class="svc-tag">Governance</span></div>
+        <div class="svc-invest">$25,000 – $60,000 · 8–12 weeks</div>
+      </div>
+      <div class="svc-card fade-up d2">
+        <div class="svc-num">02</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 002-3.95A12.88 12.88 0 0022 2c0 0-5.44-.66-9.5 3.86A19.6 19.6 0 0015 9l-3 3"/><path d="M2 21 s2.5-5 7-7"/></svg></div>
+        <div class="svc-title">Marketing Activation & Campaigns</div>
+        <div class="svc-desc">Design and execute integrated campaigns that drive business outcomes. From strategy through measurement, every campaign delivers measurable ROI.</div>
+        <div class="svc-meta"><span class="svc-tag">Campaign Strategy</span><span class="svc-tag">Media Planning</span><span class="svc-tag">Analytics</span></div>
+        <div class="svc-invest">$20,000 – $80,000 · 6–16 weeks</div>
+      </div>
+      <div class="svc-card fade-up d3">
+        <div class="svc-num">03</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10 10 0 0012 2z"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg></div>
+        <div class="svc-title">Digital Ecosystem Management</div>
+        <div class="svc-desc">Transform social channels into strategic business assets with ecosystem management that drives engagement, community, and revenue.</div>
+        <div class="svc-meta"><span class="svc-tag">Social Media</span><span class="svc-tag">Content Strategy</span><span class="svc-tag">Influencer</span></div>
+        <div class="svc-invest">$3,000 – $15,000/month</div>
+      </div>
+      <div class="svc-card fade-up d1">
+        <div class="svc-num">04</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+        <div class="svc-title">Product Innovation & Launch</div>
+        <div class="svc-desc">Navigate the complete product launch journey — from market assessment through post-launch optimization to maximize product success and market share.</div>
+        <div class="svc-meta"><span class="svc-tag">Product Launch</span><span class="svc-tag">Pricing Strategy</span><span class="svc-tag">GTM</span></div>
+        <div class="svc-invest">$35,000 – $100,000 · 12–20 weeks</div>
+      </div>
+      <div class="svc-card fade-up d2">
+        <div class="svc-num">05</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="svc-title">Marketing Talent & Capability</div>
+        <div class="svc-desc">Build high-performing marketing organizations through organizational design, competency frameworks, talent assessment, and bespoke capability development.</div>
+        <div class="svc-meta"><span class="svc-tag">Org Design</span><span class="svc-tag">Training</span><span class="svc-tag">Talent Assessment</span></div>
+        <div class="svc-invest">$20,000 – $50,000 · 8–16 weeks</div>
+      </div>
+      <div class="svc-card fade-up d3">
+        <div class="svc-num">06</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="M9 12h6M9 16h4"/></svg></div>
+        <div class="svc-title">Program & Project Management</div>
+        <div class="svc-desc">Ensure complex marketing initiatives deliver as promised. Expert PMO setup, stakeholder management, and risk mitigation for large-scale transformations.</div>
+        <div class="svc-meta"><span class="svc-tag">PMO Setup</span><span class="svc-tag">Risk Management</span><span class="svc-tag">Governance</span></div>
+        <div class="svc-invest">$4,000 – $12,000/month</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== APPROACH ==================== -->
+<section id="approach">
+  <div class="container">
+    <div class="approach-inner">
+      <div class="approach-text">
+        <div class="label-pill fade-up">Our Methodology</div>
+        <h2 class="sec-title sec-title-light fade-up d1">A Proven Path <em>to Results</em></h2>
+        <p class="sec-desc fade-up d2" style="color:rgba(255,255,255,0.55)">Six phases designed to ensure strategic clarity, flawless execution, and measurable outcomes across every engagement.</p>
+        <div class="approach-steps">
+          <div class="approach-step fade-up d1">
+            <div class="step-num">01</div>
+            <div><div class="step-title">Discovery & Diagnosis</div><div class="step-desc">Deep market analysis, competitive intelligence, and stakeholder interviews to build a complete picture.</div><div class="step-duration">Weeks 1–2</div></div>
+          </div>
+          <div class="approach-step fade-up d2">
+            <div class="step-num">02</div>
+            <div><div class="step-title">Strategic Blueprint</div><div class="step-desc">Co-create the strategic framework, KPIs, resource plan, and success metrics aligned to business goals.</div><div class="step-duration">Weeks 2–4</div></div>
+          </div>
+          <div class="approach-step fade-up d3">
+            <div class="step-num">03</div>
+            <div><div class="step-title">Execution Planning</div><div class="step-desc">Detailed workstreams, team alignment, governance setup, and risk mitigation protocols.</div><div class="step-duration">Weeks 4–6</div></div>
+          </div>
+          <div class="approach-step fade-up d4">
+            <div class="step-num">04</div>
+            <div><div class="step-title">Activation & Launch</div><div class="step-desc">Campaign rollout, channel activation, real-time monitoring, and agile optimization sprints.</div><div class="step-duration">Ongoing</div></div>
+          </div>
+          <div class="approach-step fade-up d5">
+            <div class="step-num">05</div>
+            <div><div class="step-title">Measurement & Insight</div><div class="step-desc">Rigorous performance analytics, attribution modeling, and executive-ready reporting dashboards.</div><div class="step-duration">Monthly</div></div>
+          </div>
+          <div class="approach-step fade-up d6">
+            <div class="step-num">06</div>
+            <div><div class="step-title">Optimise & Scale</div><div class="step-desc">Data-driven refinement, capability transfer to client teams, and roadmap for next-phase growth.</div><div class="step-duration">Quarterly</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="approach-img-side fade-up d2">
+        <div class="approach-imgs-grid">
+          <div class="approach-img-1">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="Strategy session">
+          </div>
+          <div class="approach-img-2">
+            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500&q=80" alt="Data analysis">
+          </div>
+          <div class="approach-img-3">
+            <div class="approach-img-3-inner">
+              <div class="big">6×</div>
+              <div class="lbl">Phased Process</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== STATS ==================== -->
+<section id="stats" style="padding: 4rem 2rem;">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat-item fade-up"><div class="stat-val">85%</div><div class="stat-lbl">Average Revenue Growth</div></div>
+      <div class="stat-item fade-up d1"><div class="stat-val">3.2×</div><div class="stat-lbl">Average Client ROI</div></div>
+      <div class="stat-item fade-up d2"><div class="stat-val">92%</div><div class="stat-lbl">Client Retention Rate</div></div>
+      <div class="stat-item fade-up d3"><div class="stat-val">15+</div><div class="stat-lbl">Industries Served</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== INSIGHTS ==================== -->
+<section id="insights">
+  <div class="container">
+    <div class="insights-header">
+      <div>
+        <div class="label-pill fade-up">Insights & Thinking</div>
+        <h2 class="sec-title fade-up d1">Ideas That <em>Move Markets</em></h2>
+      </div>
+      <a href="#" class="btn-outline-gold fade-up d2">All Insights →</a>
+    </div>
+    <div class="insights-grid">
+      <div class="insight-card fade-up">
+        <div class="insight-img tall">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80" alt="Market entry framework">
+        </div>
+        <div class="insight-body">
+          <span class="insight-cat">Market Strategy</span>
+          <div class="insight-title">The Africa Market Entry Framework: Why Most Foreign Brands Get It Wrong</div>
+          <div class="insight-excerpt">Entering African markets requires more than translated content and a local distributor. The brands that succeed understand that pan-African is a myth — each market demands cultural fluency.</div>
+          <div class="insight-meta"><span class="insight-date">March 2026</span><span class="insight-read">8 min read →</span></div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <div class="insight-card small fade-up d1">
+          <div class="insight-img short">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="Vanity metrics">
+          </div>
+          <div class="insight-body">
+            <span class="insight-cat">Performance</span>
+            <div class="insight-title">Beyond Vanity Metrics: Measuring What Actually Drives Revenue</div>
+            <div class="insight-excerpt">Most marketing dashboards are designed to impress, not inform. Here's how to build measurement frameworks that connect activity to business outcomes.</div>
+            <div class="insight-meta"><span class="insight-date">Feb 2026</span><span class="insight-read">6 min →</span></div>
+          </div>
+        </div>
+        <div class="insight-card small fade-up d2">
+          <div class="insight-img short">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80" alt="Marketing teams">
+          </div>
+          <div class="insight-body">
+            <span class="insight-cat">Talent</span>
+            <div class="insight-title">Building Marketing Teams That Can Win in Africa's Digital Decade</div>
+            <div class="insight-excerpt">The next wave of African digital growth demands a new kind of marketing team — one that blends data literacy with cultural intelligence.</div>
+            <div class="insight-meta"><span class="insight-date">Jan 2026</span><span class="insight-read">5 min →</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TESTIMONIALS ==================== -->
+<section id="testimonials">
+  <div class="container">
+    <div class="test-layout">
+      <div class="test-left">
+        <div class="label-pill fade-up">Client Voices</div>
+        <h2 class="sec-title fade-up d1">Trusted by <em>Ambitious</em> Leaders</h2>
+        <p class="sec-desc fade-up d2" style="margin-top: 0.75rem;">Our clients measure success in revenue growth, market share, and lasting capability — not slide decks.</p>
+        <div style="margin-top: 2.5rem; padding: 2rem; background: var(--navy); border-radius: 12px; border: 1px solid rgba(200,151,61,0.2);" class="fade-up d3">
+          <div style="font-family: var(--font-serif); font-size: 2.5rem; font-weight: 700; color: var(--gold);">92%</div>
+          <div style="font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.3rem;">Client Retention Rate</div>
+          <div style="margin-top: 1rem; font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.6;">Across all long-term engagements, measured over 12+ months</div>
+        </div>
+      </div>
+      <div class="test-cards">
+        <div class="test-card featured fade-up d1">
+          <div class="test-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="test-text">"Creed Consortium didn't just deliver a marketing strategy — they rebuilt how our entire commercial team thinks about growth. The results in our first year exceeded every target we had set."</p>
+          <div class="test-author">
+            <div class="test-avatar"><div class="test-avatar-initials">AO</div></div>
+            <div><div class="test-name">Adaeze Okonkwo</div><div class="test-role">Chief Commercial Officer, Helio Consumer Brands</div></div>
+          </div>
+        </div>
+        <div class="test-card fade-up d2">
+          <div class="test-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="test-text">"What sets Creed apart is their refusal to offer generic solutions. They understood our market, our consumers, and our constraints in a way that most global consultancies simply cannot."</p>
+          <div class="test-author">
+            <div class="test-avatar"><div class="test-avatar-initials">KM</div></div>
+            <div><div class="test-name">Kwame Mensah</div><div class="test-role">Marketing Director, TechBridge Ghana</div></div>
+          </div>
+        </div>
+        <div class="test-card fade-up d3">
+          <div class="test-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="test-text">"The consortium model is genuinely different. We had access to a Chief Strategy Officer, a Digital Lead, and a Brand Specialist — all working in sync, all accountable to our outcomes."</p>
+          <div class="test-author">
+            <div class="test-avatar"><div class="test-avatar-initials">ZN</div></div>
+            <div><div class="test-name">Zainab Nwosu</div><div class="test-role">CEO, Lagos Fintech Collective</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PILLARS ==================== -->
+<section id="pillars">
+  <div class="container">
+    <div class="pillars-header">
+      <div class="label-pill">The Creed</div>
+      <h2 class="sec-title">Seven Pillars of <em>Excellence</em></h2>
+      <p class="sec-desc">The foundational principles that guide every decision, recommendation, and interaction we bring to our clients.</p>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar-card fade-up d1">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Intellectual Honesty</div>
+        <div class="pillar-desc">We tell clients what they need to hear, not what they want to hear. Uncomfortable truths delivered with respect drive better decisions.</div>
+      </div>
+      <div class="pillar-card fade-up d2">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">Cultural Intelligence</div>
+        <div class="pillar-desc">Marketing effectiveness in Africa demands deep cultural understanding. We don't apply Western frameworks — we develop context-specific approaches.</div>
+      </div>
+      <div class="pillar-card fade-up d3">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Execution Excellence</div>
+        <div class="pillar-desc">Strategy without execution is just theory. We stay involved through to delivery and measure ourselves on business outcomes, not deliverables.</div>
+      </div>
+      <div class="pillar-card fade-up d4">
+        <div class="pillar-num">04</div>
+        <div class="pillar-title">Commercial Rigour</div>
+        <div class="pillar-desc">Every initiative is evaluated through a commercial lens. We connect marketing investments to revenue, margin, and long-term brand equity.</div>
+      </div>
+      <div class="pillar-card fade-up d1">
+        <div class="pillar-num">05</div>
+        <div class="pillar-title">Collaborative Partnership</div>
+        <div class="pillar-desc">We work alongside client teams, not above them. Knowledge transfer is built into every engagement so capability stays when we leave.</div>
+      </div>
+      <div class="pillar-card fade-up d2">
+        <div class="pillar-num">06</div>
+        <div class="pillar-title">Data-Driven Decisions</div>
+        <div class="pillar-desc">Intuition informed by data beats data alone. We combine rigorous analytics with market wisdom to make faster, more confident decisions.</div>
+      </div>
+      <div class="pillar-card fade-up d3">
+        <div class="pillar-num">07</div>
+        <div class="pillar-title">Sustainable Growth</div>
+        <div class="pillar-desc">Short-term wins that damage long-term brand equity are not wins. We optimise for sustained competitive advantage, not just quarterly numbers.</div>
+      </div>
+      <div class="pillar-card fade-up d4" style="background: rgba(200,151,61,0.08); border-color: rgba(200,151,61,0.35); display: flex; align-items: center; justify-content: center; text-align: center;">
+        <div>
+          <div style="font-family: var(--font-serif); font-size: 1.5rem; font-weight: 600; color: var(--gold); margin-bottom: 0.5rem;">United by Excellence</div>
+          <div style="font-size: 0.8rem; color: rgba(255,255,255,0.45); font-style: italic;">Driven by Results</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WHO WE SERVE ==================== -->
+<section id="serve">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 0;">
+      <div class="label-pill fade-up" style="justify-content: center;">Who We Serve</div>
+      <h2 class="sec-title fade-up d1" style="text-align: center;">Built for <em>Ambitious</em> Organisations</h2>
+      <p class="sec-desc fade-up d2" style="margin: 0 auto; text-align: center;">From challenger startups to global multinationals, we partner with organisations ready to compete — and win — in African markets.</p>
+    </div>
+    <div class="serve-layout">
+      <div class="serve-card fade-up d1">
+        <div class="serve-icon">
+          <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <div class="serve-title">Growth-Stage Startups</div>
+        <div class="serve-desc">You have product-market fit and need marketing infrastructure that scales with you. We build the playbooks, the team, and the systems to accelerate your next phase.</div>
+      </div>
+      <div class="serve-card fade-up d2">
+        <div class="serve-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="serve-title">Regional Mid-Market</div>
+        <div class="serve-desc">Established businesses seeking to expand across African markets, reposition their brand, or transform their marketing function for the digital decade ahead.</div>
+      </div>
+      <div class="serve-card fade-up d3">
+        <div class="serve-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <div class="serve-title">Global Multinationals</div>
+        <div class="serve-desc">International organisations entering or scaling in African markets who need partners with the cultural intelligence, local networks, and strategic rigour to win.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FINAL CTA ==================== -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-content">
+      <span class="cta-eyebrow">Ready to Transform?</span>
+      <h2 class="cta-title">Let's Build Something <em>Remarkable</em> Together</h2>
+      <p class="cta-desc">Schedule a no-obligation conversation with our senior team. We'll explore your challenges, your ambitions, and whether we're the right partners to help you achieve them.</p>
+      <div class="cta-actions">
+        <a href="mailto:hello@creedconsortium.com" class="btn-primary-hero">Schedule a Consultation</a>
+        <a href="#services" class="btn-ghost-hero">Explore Services</a>
+      </div>
+      <p class="cta-note">No sales pitch. Just an honest conversation about your challenges and how we can help.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Creed <span>Consortium</span></div>
+      <div class="footer-tagline">United by Excellence, Driven by Results · Accra · Lagos · Nairobi</div>
+    </div>
+    <div class="footer-links">
+      <a href="#why">About</a>
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#insights">Insights</a>
+      <a href="#cta">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 Creed Consortium Africa</div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); } });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Stat counter animation
+function animateCount(el, target, suffix, decimals, duration = 1800) {
+  const start = performance.now();
+  const update = (time) => {
+    const progress = Math.min((time - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const current = (target * ease).toFixed(decimals);
+    el.textContent = current + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+}
+
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target.querySelector('.stat-val');
+      const text = el.textContent;
+      const suffix = text.replace(/[\d.]/g, '');
+      const num = parseFloat(text);
+      if (!isNaN(num)) animateCount(el, num, suffix, text.includes('.') ? 1 : 0);
+      statObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-item').forEach(el => statObserver.observe(el));
+</script>
+</body>
+</html>
